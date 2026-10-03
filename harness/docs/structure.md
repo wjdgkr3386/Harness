@@ -36,4 +36,8 @@
 - 프로젝트/docs/structure.md
 - 프로젝트/docs/test.md
 - 프로젝트/docs/todo.md
+- 프로젝트/docs/overview.md
+- 프로젝트/docs/api.md
+- 프로젝트/docs/decision.md
+- 프로젝트/docs/security.md
 - 프로젝트/CLAUDE.md

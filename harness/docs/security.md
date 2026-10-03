@@ -32,7 +32,7 @@
 - 사용자 입력을 `innerHTML`, `document.write`, `eval`에 넣지 않는다. `textContent`를 사용한다.
 
 ## 7. CSRF 방지
-- 쿠키 기반 인증을 쓰면 상태를 바꾸는 요청(POST, PUT, PATCH, DELETE)에 CSRF 토큰 또는 SameSite 쿠키를 적용한다.
+- 쿠키 기반 인증을 쓰면 상태를 바꾸는 요청(POST)에 CSRF 토큰 또는 SameSite 쿠키를 적용한다.
 
 ## 8. 파일 업로드
 - 확장자와 크기를 허용 목록으로 제한한다.

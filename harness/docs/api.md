@@ -19,7 +19,7 @@ API의 기준 문서다. API를 추가하거나 바꾸는 작업에서는 이 �
 
 | 대상 | 규칙 | 예 |
 |---|---|---|
-| 경로 | 소문자 kebab-case, 복수형 명사 | `/api/users`, `/api/order-items` |
+| 경로 | 소문자 kebab-case, 복수형 명사 | `/api/users` |
 | 경로 변수 | `{id}` | `/api/users/{id}` |
 | 요청/응답 필드 | camelCase | `userName`, `createdAt` |
 | 쿼리 파라미터 | camelCase | `?pageSize=20` |
@@ -28,10 +28,7 @@ API의 기준 문서다. API를 추가하거나 바꾸는 작업에서는 이 �
 | 메서드 | 용도 |
 |---|---|
 | GET | 조회 |
-| POST | 생성 |
-| PUT | 전체 수정 |
-| PATCH | 일부 수정 |
-| DELETE | 삭제 |
+| POST | 생성/수정/삭제 |
 
 ---
 

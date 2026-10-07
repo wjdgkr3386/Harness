@@ -25,6 +25,7 @@
 |프로젝트/backend/|백엔드 폴더 (예시)|
 |프로젝트/frontend/|프론트엔드 폴더 (예시)|
 |프로젝트/backend/Controllers/HomeController.cs|기본 홈컨트롤러 (예시)|
+|프로젝트/docs/mockups/|화면 시안 HTML. 서버 없이 바로 열어 보는 파일 (loop.md 3번 구현 화면 작업)|
 
 ### 변경 불가능
 - 프로젝트/docs/coding_rule.md

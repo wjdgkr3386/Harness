@@ -67,3 +67,15 @@ CLAUDE.md 규칙에 따라 AI는 컨텍스트가 자동 압축되기 직전이�
 - 저장한 뒤 Claude Code를 다시 시작해야 적용된다.
 - 자동 압축뿐 아니라 수동 압축(`/compact`)도 함께 꺼진다.
 - 컨텍스트가 가득 차면 압축되지 않고 오류를 내며 세션이 멈춘다. 이때는 새 세션을 시작하면 AI가 CLAUDE.md 규칙에 따라 docs/todo.md를 읽고 이어서 작업한다.
+
+## 비밀 정보와 사용자 설정은 직접 넣기 (Claude 데스크톱 앱, Windows)
+Windows의 Claude 데스크톱 앱은 MSIX 패키지 앱이다. 그래서 AI가 실행한 명령이 `C:\Users\{사용자명}\AppData\Roaming` 아래에 쓰는 파일은 실제 위치가 아니라 앱 전용 가상 폴더(`AppData\Local\Packages\Claude_{ID}\LocalCache\Roaming`)에 저장된다.
+
+- AI가 넣은 값은 사용자가 cmd나 Visual Studio에서 볼 수 없다.
+- AI 쪽에 같은 파일이 있으면 그 파일이 실제 파일을 가려서, 사용자가 넣은 값도 AI에게 보이지 않는다.
+- 해당하는 예: .NET User Secrets(`AppData\Roaming\Microsoft\UserSecrets`), 사용자 프로필 아래의 각종 설정 파일
+
+그래서 아래 규칙을 따른다.
+1. User Secrets처럼 사용자 프로필(`AppData`) 아래에 저장되는 값은 비밀 정보가 아니어도 사용자가 cmd에서 직접 넣는다. AI는 넣을 명령만 알려준다.
+2. AI는 이런 저장소에 직접 쓰지 않는다. 이미 썼다면 AI 쪽 가상 폴더의 파일을 지워야 사용자가 넣은 실제 파일이 AI에게 보인다.
+3. 값이 들어갔는지는 키 이름만 확인한다. 값은 출력하지 않는다.

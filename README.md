@@ -17,6 +17,7 @@
 - harness/docs/api.md : API 명세를 정의해둔 파일
 - harness/docs/decision.md : 사용자의 결정과 이유를 기록하는 파일
 - harness/docs/security.md : 보안 규칙을 정의해둔 파일
+- harness/docs/git.md : git 사용과 소스 코드 보관 규칙을 정의해둔 파일
 
 # 사용 방법
 1. 프로젝트를 진행할 폴더를 생성한다.
@@ -67,6 +68,30 @@ CLAUDE.md 규칙에 따라 AI는 컨텍스트가 자동 압축되기 직전이�
 - 저장한 뒤 Claude Code를 다시 시작해야 적용된다.
 - 자동 압축뿐 아니라 수동 압축(`/compact`)도 함께 꺼진다.
 - 컨텍스트가 가득 차면 압축되지 않고 오류를 내며 세션이 멈춘다. 이때는 새 세션을 시작하면 AI가 CLAUDE.md 규칙에 따라 docs/todo.md를 읽고 이어서 작업한다.
+
+## AI의 git commit, push 막기
+docs/git.md 규칙에 따라 AI는 git commit, git push를 실행하지 않는다.
+
+하지만 md 파일의 규칙은 AI에게 하는 안내일 뿐 강제력이 없다.
+
+명령 실행 자체를 확실히 막으려면 프로젝트 폴더의 `.claude\settings.json` 파일에 아래 내용을 추가한다.
+
+```json
+{
+  "permissions": {
+    "deny": [
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "PowerShell(git commit:*)",
+      "PowerShell(git push:*)"
+    ]
+  }
+}
+```
+
+- 파일에 다른 설정이 이미 있다면 기존 내용은 그대로 두고 `"permissions"` 항목만 추가한다. `"permissions"`가 이미 있으면 `"deny"` 목록에 위 4줄만 추가한다.
+- `deny`에 있는 명령은 사용자가 요청해도 AI가 실행할 수 없다. 커밋과 푸시는 사용자가 터미널에서 직접 한다.
+- 이 파일을 프로젝트와 함께 커밋하면 다른 컴퓨터에서도 같이 적용된다.
 
 ## 비밀 정보와 사용자 설정은 직접 넣기 (Claude 데스크톱 앱, Windows)
 Windows의 Claude 데스크톱 앱은 MSIX 패키지 앱이다. 그래서 AI가 실행한 명령이 `C:\Users\{사용자명}\AppData\Roaming` 아래에 쓰는 파일은 실제 위치가 아니라 앱 전용 가상 폴더(`AppData\Local\Packages\Claude_{ID}\LocalCache\Roaming`)에 저장된다.

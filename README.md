@@ -19,6 +19,7 @@
 - harness/docs/security.md : 보안 규칙을 정의해둔 파일
 - harness/docs/git.md : git 사용과 소스 코드 보관 규칙을 정의해둔 파일
 - harness/docs/reference/ : 참고자료를 넣는 폴더. 사용자가 넣고 AI는 작업 계획 전에 관련 자료만 읽는다 (AI는 파일을 넣거나 고치지 않는다)
+- harness/docs/reference.md : reference 폴더의 파일마다 설명과 관련 작업을 정리한 파일. AI가 작업 계획 전에 폴더를 보고 갱신한다
 
 # 사용 방법
 1. 프로젝트를 진행할 폴더를 생성한다.

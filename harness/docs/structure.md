@@ -43,4 +43,5 @@
 - 프로젝트/docs/decision.md
 - 프로젝트/docs/security.md
 - 프로젝트/docs/git.md
+- 프로젝트/docs/reference/
 - 프로젝트/CLAUDE.md
